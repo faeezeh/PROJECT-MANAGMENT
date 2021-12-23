@@ -1,7 +1,6 @@
 package com.jrp.pma.dao;
 
 import com.jrp.pma.dto.ChartData;
-import com.jrp.pma.dto.EmployeeProject;
 import com.jrp.pma.entities.Project;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
