@@ -1,2 +1,7 @@
-package com.jrp.pma.services;public class IStaffRepository {
+package com.jrp.pma.services;
+
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class IStaffRepository {
 }

@@ -10,12 +10,19 @@ import java.util.List;
 @Entity
 public class Project implements Serializable {
 
+
+
     @Id
-    //@GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="project_seq")
+    @SequenceGenerator(name = "project_seq", sequenceName = "project_seq", allocationSize = 1)
     private long projectId;
+
     private String name;
-    private String stage;
+
+    private String stage; // NOTSTARTED, COMPLETED, INPROGRESS
+
     private String description;
+
     @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST},
         fetch = FetchType.LAZY)
     @JoinTable(name="project_employee",

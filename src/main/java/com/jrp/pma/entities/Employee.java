@@ -7,9 +7,12 @@ import java.util.List;
 
 @Entity
 public class Employee {
+
     @Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
-    public long employeeId;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="employee_seq")
+    @SequenceGenerator(name = "employee_seq", sequenceName = "employee_seq", allocationSize = 1)
+    private long employeeId;
+
     private String firstName;
     private String lastName;
     private String email;
