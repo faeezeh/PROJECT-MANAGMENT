@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -44,4 +45,24 @@ public class EmployeeController {
         //use a redirect to prevent duplicate submissions
         return "redirect:/employees/new";
     }
+
+    @GetMapping("/update")
+    public String displayEmployeeUpdateForm(@RequestParam( "id") long id,Model model){
+
+        Employee employee = empRepo.findByEmployeeId(id);
+
+        model.addAttribute("employee",employee);
+
+        return "employees/new-employee";
+    }
+
+    @GetMapping("/delete")
+    public String deleteEmployee(@RequestParam("id") long id, Model model){
+        Employee employee = empRepo.findByEmployeeId(id);
+        empRepo.delete(employee);
+        return "redirect:/employees";
+    }
+
+
+
 }
